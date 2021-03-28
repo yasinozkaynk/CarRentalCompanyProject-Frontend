@@ -1,0 +1,11 @@
+<table  class="list-group">
+    <li  [class]="getAllCategoryClass()" routerLink = "/cars">Tüm Renkler</li>
+    <li (click)="setCurrentCategory(color)"
+    routerLink = "/cars/color/{{color.colorId}}"
+    *ngFor="let color of colors" 
+    [class]="getCurrentCategoryClass(color)">
+    {{color.colorName}}</li>
+
+
+
+
