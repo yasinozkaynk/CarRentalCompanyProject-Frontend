@@ -1,30 +1,66 @@
- <div *ngFor="let car of cars"  id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    </div >
-    <div class="carousel-inner">
-      <div class="carousel-item active" >
-        <img [src]="car.imagePath" class="d-block w-100" alt="...">
+<table *ngFor="let car of cars" class="table" >
+  <thead>
+    <tr>
+      <th class="text-center">#</th>
+      <th>Araç</th>
+      <th>Reng</th>
+      <th>Model</th>
+      <th class="text-right">Günlük Ücret</th>
+      <th class="text-right">Açıklama</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="text-center">1</td>
+      <td>{{car.carName}}</td>
+      <td>{{car.colorName}}</td>
+      <td>{{car.modelYear}}</td>
+      <td class="text-right">&euro; {{car.dailyPrice}}</td>
+      <td class="td-actions text-right">{{car.description}} </td>
+    </tr>
+  </tbody>
+</table>
+<div *ngFor="let car of cars" class="row align-items-md-stretch">
+  <div class="col-md-7">
+    <div class="text-white bg-dark rounded-5">
+      <div class="carousel-item active">
+        <img [src]="car.imagePath" class="d-block w-100" height="304" alt="...">
       </div>
+    </div>
   </div>
-  <table class="table table-dark table-striped">
-        <thead>
-          <tr>
-            <th scope="col">Araç Adı</th>
-            <th scope="col">Model Yılı</th>
-            <th scope="col">Günlük Ücret</th>
-            <th scope="col">Açıklama</th>
-            <th>Kirala </th>
-          </tr>
-        </thead>
-        <tbody>
-            <tr>
-              <td>{{car.carName}}</td>
-              <td>{{car.modelYear}}</td>
-              <td>{{car.dailyPrice | currency}}</td>
-              <td>{{car.description }}</td>   
-              <td> <button routerLink="/rentals/car/{{]]" class="btn btn-light">Kirala</button></td>
-            </tr>
-          </tbody>
-      </table>
-     
+  <div class="col-md-5">
+    <div class="h-110 p-1 bg-light border rounded-0">
+      <div>
+        <form>
+          <div>
+            <h4 class="title">Araç Kirala</h4>
+          </div>
+          <div class="mb-2">
+            <div class="form-group">
+              <input type="text" class="col-md-3" id="carId" formControlName="carId" class="form-control"
+                placeholder="araç no" />
+            </div>
+          </div>
+          <div class="form-row" style="width: 50%;">
+            <label for="select_customer">
+              Please select customer</label>
+            <select id="select_customer" class="custom-select" [(ngModel)]="customerId" aria-placeholder="All Customers"
+              type="number">
+              <option *ngFor="let customer of customers" type="number" [value]="customer.id">
+                {{customer.firstName}}
+              </option>
+            </select>
+          </div>
+          <div class="col-md-6 mb-2">
+            <input [(ngModel)]="rentdate" class="form-control" type="datetime-local" value="" id="rent_date" required />
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="validationCustom02">Return Date</label>
+            <input [(ngModel)]="returndate" class="form-control" type="datetime-local" value="" id="return_date" />
+          </div>
+        </form>
+        <button (click)="createRent()" class="btn btn-outline-primary" routerLink="/rentals"  align="left" type="button">Kirala</button>
+      </div>
+      </div>
+    </div>
+  </div>
