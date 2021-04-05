@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,10 +14,27 @@ import { ColorComponent } from './components/color/color.component';
 import { BrandComponent } from './components/brand/brand.component';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
 import { FilterPipePipe } from './pipe/filter-pipe.pipe';
-import { CarRentalComponent } from './components/car-rental/car-rental.component';
 
 import{ToastrModule} from 'ngx-toastr';
-import { from } from 'rxjs';
+import { PaymentComponent } from './components/payment/payment.component';
+import { LoginComponent } from './components/login/login.component';
+
+import { JwtModule } from '@auth0/angular-jwt';
+import { AuthService } from './serviices/auth.service';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { CarAddComponent } from './components/car-add/car-add.component';
+import { ColorAddComponent } from './components/color-add/color-add.component';
+import { BrandAddComponent } from './components/brand-add/brand-add.component';
+import { CarupdateComponent } from './components/carupdate/carupdate.component';
+import { RegisterComponent } from './components/register/register.component';
+import { BrandFilterPipe } from './pipe/brand-filter.pipe';
+import { ColorFilterPipe } from './pipe/color-filter.pipe';
+
+export function tokenGetter() {
+  return localStorage.getItem("token");
+}
+
+
 
 
 @NgModule({
@@ -27,20 +46,38 @@ import { from } from 'rxjs';
     BrandComponent,
     CarDetailComponent,
     FilterPipePipe,
-    CarRentalComponent
+    PaymentComponent,
+    LoginComponent,
+    CarAddComponent,
+    ColorAddComponent,
+    BrandAddComponent,
+    CarupdateComponent,
+    RegisterComponent,
+    BrandFilterPipe,
+    ColorFilterPipe,
+   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    NgbModule, 
     BrowserAnimationsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot({
       positionClass:"toast-top-left"
-    })
+    }),
+    JwtModule.forRoot({
+      config:{
+        tokenGetter: tokenGetter,
+      }
+    }),
+    
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

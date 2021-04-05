@@ -1,0 +1,90 @@
+<table  class="table table-dark">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Marka Kodu</th>
+        <th scope="col">Marka </th>
+      </tr>
+    </thead>
+    <tbody  *ngFor="let brand of brands">
+      <tr>
+        <th></th>
+        <th scope="row">{{brand.brandId}}</th>
+        <td colspan="2">{{brand.brandName}}</td>
+      </tr>
+    </tbody>
+  </table>
+<div class="row align-items-md-stretch">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="title">Marka Ekle</h5>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="brandAddForm">
+                    <div class="mb-3">
+                        <label for="unitPrice">Marka</label>
+                        <div class="form-group">
+                            <input type="text" id="brandName" formControlName="brandName" class="form-control"
+                                placeholder="" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-fill btn-primary" (click)="add()">Ekle</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div >
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="title">Marka Güncelle</h5>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="brandUpdateForm">
+                        <div class="mb-3">
+                            <label for="unitPrice">Marka Kodu</label>
+                            <div class="form-group">
+                                <input type="number" id="brandId" formControlName="brandId" class="form-control"
+                                    placeholder="" />
+                            </div>
+                            <label for="unitPrice">Marka</label>
+                            <div class="form-group">
+                                <input type="text" id="brandName" formControlName="brandName" class="form-control"
+                                    placeholder="" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-fill btn-primary" (click)="update()">Güncelle</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div >
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="title">Marka Sil</h5>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="brandDeleteForm">
+                        <div class="mb-3">
+                            <label for="unitPrice">Marka Kodu</label>
+                            <div class="form-group">
+                                <input type="number" id="brandId" formControlName="brandId" class="form-control"
+                                    placeholder="" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-fill btn-primary" (click)="delete()">Sil</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Color } from '../models/color';
 import { ListResponseModel } from '../models/listResponseModel';
+import { ResponseModel } from '../models/responseModel';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +18,14 @@ export class ColorService {
     let newPath=this.apiUrl + "color/getall"
     return this.httpClient.get<ListResponseModel<Color>>(newPath)
 
+  }
+  addColor(color:Color):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(this.apiUrl + "color/add",color)
+  }
+  updateColor(color:Color):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(this.apiUrl + "color/update",color)
+  }
+  deleteColor(color:Color):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(this.apiUrl + "color/delete",color)
   }
 }

@@ -1,0 +1,71 @@
+<button type="button" *ngIf="checkAdminRole()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+    data-bs-whatever="@mdo">Güncelle</button>
+
+<div class="modal fade" id="exampleModal" role="document">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="carUpdateForm">
+                    <div class="mb3">
+                        <label for="brandId" class="form-label">Araç Kodu</label>
+                        <input class="form-control form-select mb-3" name="brandId" id="carId" type="number"
+                            formControlName="carId" aria-label=".form-select-lg example">
+                        
+                    </div>
+                    <div class="mb3">
+                        <label for="brandId" class="form-label">Brand</label>
+                        <select class="form-control form-select mb-3" name="brandId" id="brandId" type="number"
+                            formControlName="brandId" aria-label=".form-select-lg example">
+                            <option *ngFor="let brand of brands" [ngValue]="brand.brandId">{{brand.brandName}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="mb3">
+                        <label for="colorId" class="form-label">Color</label>
+                        <select class="form-control form-select mb-3" name="colorId" id="colorId"
+                            formControlName="colorId" aria-label=".form-select-lg example">
+                            <option *ngFor="let color of colors" [ngValue]="color.colorId">{{color.colorName}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="modelYear">Model Year</label>
+                        <div class="form-group">
+                            <input type="number" id="modelYear" formControlName="modelYear" placeholder="Model Year"
+                                class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="dailyPrice">Daily Price</label>
+                        <div class="form-group">
+                            <input type="number" id="dailyPrice" formControlName="dailyPrice"
+                                placeholder="Daily Price" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description" class="fore-label">Description</label>
+                        <div class="form-group">
+                            <input type="text" id="description" formControlName="description"
+                                placeholder="Description" class="form-control" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-success" (click)="carUpdate()" data-dismiss="modal">
+                    Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

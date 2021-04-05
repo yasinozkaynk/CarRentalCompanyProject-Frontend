@@ -11,7 +11,9 @@ import { CarService } from 'src/app/serviices/car.service';
 export class CarComponent implements OnInit {
 
   cars:Car[]=[]
+  car:Car;
   filterText=""
+  carForUpdate:Car 
   constructor(private carService:CarService,
     private active:ActivatedRoute) { }
 
