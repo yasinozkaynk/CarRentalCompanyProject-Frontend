@@ -51,14 +51,14 @@
                 Giriş Yap
               </button>
             </li>
-            <div class="navbar-nav ml-auto" *ngIf="checkAdminRole()" class="dropdown">
+            <div class="navbar-nav ml-auto"  *ngIf="checkAdminRole()" class="dropdown">
               <button class="btn btn-secondary" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 {{authService.name}}{{authService.surname}}
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" routerLink="/account">Hesap Bilgilerim</a></li>
-                <li><a class="dropdown-item" routerLink="/findex">Findex Puanım</a></li>
+                <li><a class="dropdown-item" routerLink="/user">Hesap Bilgilerim</a></li>
+                <li><a class="dropdown-item" routerLink="/userrental">Geçmiş Kiralamalar</a></li>
                 <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
                   Çıkış Yap
                 </button>

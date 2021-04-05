@@ -29,6 +29,8 @@ import { CarupdateComponent } from './components/carupdate/carupdate.component';
 import { RegisterComponent } from './components/register/register.component';
 import { BrandFilterPipe } from './pipe/brand-filter.pipe';
 import { ColorFilterPipe } from './pipe/color-filter.pipe';
+import { UserComponent } from './components/user/user.component';
+import { UserRentalComponent } from './components/user-rental/user-rental.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -55,6 +57,8 @@ export function tokenGetter() {
     RegisterComponent,
     BrandFilterPipe,
     ColorFilterPipe,
+    UserComponent,
+    UserRentalComponent,
    
   ],
   imports: [

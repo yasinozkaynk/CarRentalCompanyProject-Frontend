@@ -2,11 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Observable } from 'rxjs';
 import { LoginModel } from '../models/loginModel';
 import { Model } from '../models/model';
 import { RegisterModel } from '../models/register';
 import { ResponseModel } from '../models/responseModel';
 import { TokenModel } from '../models/tokenModel';
+import { User } from '../models/user';
 import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
@@ -39,6 +41,10 @@ export class AuthService {
       this.apiUrl + 'register',
       registerModel
     );
+  }
+  update(user:User): Observable<Model<User>> {
+    let newPath=this.apiUrl+"update";
+    return this.httpClient.post<Model<User>>(newPath,user)
   }
   isAuthenticated() {
     if (localStorage.getItem('token')) {

@@ -8,6 +8,8 @@ import { ColorAddComponent } from './components/color-add/color-add.component';
 import { LoginComponent } from './components/login/login.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { RegisterComponent } from './components/register/register.component';
+import { UserRentalComponent } from './components/user-rental/user-rental.component';
+import { UserComponent } from './components/user/user.component';
 import { AdminGuard } from './guards/admin.guard';
 import { LoginGuard } from './guards/login.guard';
 
@@ -24,6 +26,8 @@ const routes: Routes = [
   {path:"caradd",component:CarAddComponent,canActivate:[AdminGuard]},
   {path:"brandadd",component:BrandAddComponent,canActivate:[AdminGuard]},
   {path:"coloradd",component:ColorAddComponent,canActivate:[AdminGuard]},
+  {path:"user",component:UserComponent},
+  {path:"userrental",component:UserRentalComponent},
   
 ];
 @NgModule({

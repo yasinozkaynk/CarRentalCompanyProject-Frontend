@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("token",response.data.token)
         this.router.navigate(['']);
       },responseError=>{
-        this.toastrService.error(responseError.error,"Hatalı giriş")  
+        this.toastrService.error(responseError.error,"Kullanıcı Bulunamadı")  
       })
     }
   }

@@ -17,7 +17,7 @@ export class NaviComponent implements OnInit {
     var myModal = document.getElementById('myModal')
    var myInput = document.getElementById('myInput')
 
-   myModal.addEventListener('shown.bs.modal', function () {
+   myModal.addEventListener('', function () {
    myInput.focus()
 })
   }
@@ -38,7 +38,7 @@ export class NaviComponent implements OnInit {
     }
    }
    checkUserRole(){
-    if(this.authService.role=="Kullanıcı"){
+    if(this.authService.role=="Kullanici"){
       return true
     }
     else{
