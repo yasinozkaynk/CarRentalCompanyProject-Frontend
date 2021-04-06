@@ -7,11 +7,14 @@ import { LoginGuard } from 'src/app/guards/login.guard';
 import { Car } from 'src/app/models/car';
 import { CarDto } from 'src/app/models/carDto';
 import { CustomerDto } from 'src/app/models/customerdto';
+import { Findex } from 'src/app/models/findex';
 import { Rental } from 'src/app/models/rental';
 import { RentalDto } from 'src/app/models/rentaldto';
+import { AuthService } from 'src/app/serviices/auth.service';
 import { CarDetailService } from 'src/app/serviices/car-detail.service';
 import { CarRentalService } from 'src/app/serviices/car-rental.service';
 import { CustomerService } from 'src/app/serviices/customer.service';
+import { FindexService } from 'src/app/serviices/findex.service';
 import { PaymentService } from 'src/app/serviices/payment.service';
 import { PaymentComponent } from '../payment/payment.component';
 
@@ -26,8 +29,8 @@ export class CarDetailComponent implements OnInit {
   rentalDtos: RentalDto[] = [];
   customers: CustomerDto[] = [];
   rental: Rental;
-  carDetail: CarDto
-  carDto:CarDto[]=[]
+  findex:Findex[]=[]
+  userfindex:number
 
   customerId: Number;
   customerName: string;
@@ -49,6 +52,8 @@ export class CarDetailComponent implements OnInit {
     private rentalService:CarRentalService,
     private activatedRoute:ActivatedRoute,
     private router: Router,
+    private authService:AuthService,
+    private findexService:FindexService
 
   ) {}
 
@@ -61,10 +66,35 @@ export class CarDetailComponent implements OnInit {
       }
     });
     this.getAllCustomers();
+    this.findexByUserId(this.authService.userId)
+    var myModal = document.getElementById('exampleModalw')
+    var myInput = document.getElementById('myInput')
+    
+    myModal.addEventListener('shown.bs.modal', function () {
+      myInput.focus()
+    })
+    this.isAuthenticated();
   }
-  addtoRental(rental:Rental){
-
-  }
+  isAuthenticated(){
+    if(this.authService.isAuthenticated()){
+      return true
+    }
+    else{
+      return false
+    }
+   }
+  findexByUserId(userId:number){
+    this.findexService.getFindexScoreByUserId(userId).subscribe(response=>{
+      this.findex=response.data 
+        })
+       }
+  checkFindex(){
+    if((this.cars[0]?.minFindexScore)<=(this.findex[0]?.findexScore)){
+      return true
+   }
+    else{
+      return false}
+   }  
   getCar(carId: number) {
     this.cardetailService.carDetail(carId).subscribe((response) => {
       this.cars = response.data;

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/serviices/auth.service';
 
 @Component({
@@ -8,18 +9,12 @@ import { AuthService } from 'src/app/serviices/auth.service';
 })
 export class NaviComponent implements OnInit {
 
-  constructor(public authService:AuthService) { }
+  constructor(public authService:AuthService,private router:Router) { }
 
   ngOnInit(): void {
     if(this.isAuthenticated()){
       this.authService.userDetailFromToken();  
     } 
-    var myModal = document.getElementById('myModal')
-   var myInput = document.getElementById('myInput')
-
-   myModal.addEventListener('', function () {
-   myInput.focus()
-})
   }
   isAuthenticated(){
     if(this.authService.isAuthenticated()){
@@ -45,18 +40,10 @@ export class NaviComponent implements OnInit {
       return false
     }
    }
-  
-   checkNotRole(){
-    if(this.authService.role==null){
-      return true
-    }
-    else{
-      return false
-    }
-   }
-  
    logOut() {
     this.authService.logout();
+    this.router.navigate([''])
+    
   }
    
 

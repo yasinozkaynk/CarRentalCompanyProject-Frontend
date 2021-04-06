@@ -51,7 +51,7 @@
                 Giriş Yap
               </button>
             </li>
-            <div class="navbar-nav ml-auto"  *ngIf="checkAdminRole()" class="dropdown">
+            <div class="navbar-nav ml-auto" *ngIf="checkAdminRole()" class="dropdown">
               <button class="btn btn-secondary" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 {{authService.name}}{{authService.surname}}
@@ -59,29 +59,11 @@
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><a class="dropdown-item" routerLink="/user">Hesap Bilgilerim</a></li>
                 <li><a class="dropdown-item" routerLink="/userrental">Geçmiş Kiralamalar</a></li>
-                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" (click)="logOut()" class="btn" data-bs-toggle="modal"
+                  data-bs-target="#exampleModal">
                   Çıkış Yap
                 </button>
               </ul>
-              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Çıkış Yapmak İstediğinizden Emin Misiniz?</h5>
-                      <button style="background-color: yellowgreen;" type="button" class="btn-close"
-                        data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-
-                    <div class="modal-footer">
-                      <button style="background-color: yellowgreen;" type="button" class="btn btn-secondary"
-                        data-bs-dismiss="modal">Vazgeç</button>
-                      <button style="background-color:red;" (click)="logOut()" type="button" class="btn btn-primary"
-                        data-bs-dismiss="modal">Çıkış Yap</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </ul>
         </div>

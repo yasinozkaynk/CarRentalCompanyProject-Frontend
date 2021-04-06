@@ -8,4 +8,5 @@ export interface Car{
     description:string;
     brandId:number;
     colorId:number
+    minFindexScore:number
 }

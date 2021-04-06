@@ -31,6 +31,8 @@ import { BrandFilterPipe } from './pipe/brand-filter.pipe';
 import { ColorFilterPipe } from './pipe/color-filter.pipe';
 import { UserComponent } from './components/user/user.component';
 import { UserRentalComponent } from './components/user-rental/user-rental.component';
+import { HomeComponent } from './components/home/home.component';
+import { FindexComponent } from './components/findex/findex.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -59,6 +61,8 @@ export function tokenGetter() {
     ColorFilterPipe,
     UserComponent,
     UserRentalComponent,
+    HomeComponent,
+    FindexComponent,
    
   ],
   imports: [

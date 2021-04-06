@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Car } from 'src/app/models/car';
 import { CarService } from 'src/app/serviices/car.service';
 
@@ -15,7 +15,7 @@ export class CarComponent implements OnInit {
   filterText=""
   carForUpdate:Car 
   constructor(private carService:CarService,
-    private active:ActivatedRoute) { }
+    private active:ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
     this.active.params.subscribe(params=>{

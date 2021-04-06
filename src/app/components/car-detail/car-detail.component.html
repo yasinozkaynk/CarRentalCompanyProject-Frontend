@@ -7,6 +7,7 @@
       <th scope="col">Renk</th>
       <th scope="col">Günlük Ücret</th>
       <th scope="col">Açıklama</th>
+      <th scope="col"> Findex</th>
     </tr>
   </thead>
   <tbody  *ngFor="let car of cars">
@@ -16,7 +17,8 @@
       <th scope="row">{{car.modelYear}}</th>
       <th scope="row">{{car.colorName}}</th>
       <th scope="row">{{car.dailyPrice}}</th>
-      <th scope="row">{{car. description}}</th>
+      <th scope="row">{{car.description}}</th>
+      <th scope="row">{{car.minFindexScore}}</th>
     </tr>
   </tbody>
 </table>
@@ -63,11 +65,26 @@
               <h5 class="price"><span class="text-danger">{{amountPaye | currency:"₺"}}</span></h5>
             </div>
           </div>
+          
           <div>
              <button (click)="createRentalRequest(car)" class="add-to-cart btn btn-default" type="button">
             Kirala
           </button>
           <app-carupdate></app-carupdate>
+          </div>
+          <button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#staticBackdrop"> Findex Puan Sorgula </button>
+           <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">Findex Puanınız Bu Aracı Kiralamak İçin Yeterli Değil</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-footer">
+                  <button routerLink=""  type="button" class="btn-primary" data-bs-dismiss="modal">Kapat</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
