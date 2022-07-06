@@ -13,8 +13,8 @@ export class NaviComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.isAuthenticated()){
-      this.authService.userDetailFromToken();  
-    } 
+      this.authService.userDetailFromToken();
+    }
   }
   isAuthenticated(){
     if(this.authService.isAuthenticated()){
@@ -33,7 +33,7 @@ export class NaviComponent implements OnInit {
     }
    }
    checkUserRole(){
-    if(this.authService.role=="Kullanici"){
+    if(this.authService.role=="Kullanici" ){
       return true
     }
     else{
@@ -43,8 +43,8 @@ export class NaviComponent implements OnInit {
    logOut() {
     this.authService.logout();
     this.router.navigate([''])
-    
+
   }
-   
+
 
 }
