@@ -29,13 +29,9 @@ export class CarDetailComponent implements OnInit {
   rentalDtos: RentalDto[] = [];
   customers: CustomerDto[] = [];
   rental: Rental;
-  findex:Findex[]=[]
   userfindex:number
 
-  customerId: Number;
-  customerName: string;
-  companyName: string;
-  customerEmail: string;
+
   rentDate!: Date;
   returnDate!: Date;
   carName!:string;
@@ -44,6 +40,7 @@ export class CarDetailComponent implements OnInit {
   carId: number;
   carBrandName: string;
   carModelName: string;
+
   constructor(
     private cardetailService: CarDetailService,
     private toastrService: ToastrService,
@@ -52,7 +49,7 @@ export class CarDetailComponent implements OnInit {
     private rentalService:CarRentalService,
     private activatedRoute:ActivatedRoute,
     private router: Router,
-    private authService:AuthService,
+    public authService:AuthService,
     private findexService:FindexService
 
   ) {}
@@ -65,16 +62,15 @@ export class CarDetailComponent implements OnInit {
         this.getCar(params['carId']);
       }
     });
-    this.getAllCustomers();
-    this.findexByUserId(this.authService.userId)
     var myModal = document.getElementById('exampleModalw')
     var myInput = document.getElementById('myInput')
-    
+
     myModal.addEventListener('shown.bs.modal', function () {
       myInput.focus()
     })
     this.isAuthenticated();
   }
+
   isAuthenticated(){
     if(this.authService.isAuthenticated()){
       return true
@@ -83,32 +79,17 @@ export class CarDetailComponent implements OnInit {
       return false
     }
    }
-  findexByUserId(userId:number){
-    this.findexService.getFindexScoreByUserId(userId).subscribe(response=>{
-      this.findex=response.data 
-        })
-       }
-  checkFindex(){
-    if((this.cars[0]?.minFindexScore)<=(this.findex[0]?.findexScore)){
-      return true
-   }
-    else{
-      return false}
-   }  
+
   getCar(carId: number) {
     this.cardetailService.carDetail(carId).subscribe((response) => {
       this.cars = response.data;
     });
   }
-  getAllCustomers() {
-    this.customerService.getCustomerDto().subscribe((response) => {
-      this.customers = response.data;
-    });
-  }
 
-  
+
+
   createRentalRequest(car: Car) {
-    if (this.customerId === undefined) {
+    if (this.isAuthenticated()===undefined) {
       this.toastrService.warning('Müşteri bilgisini kontrol ediniz.');
     } else if (this.rentDate === undefined || !this.rentDate) {
       this.toastrService.warning('Alış Tarihi bilgisini kontrol ediniz.');
@@ -125,7 +106,7 @@ export class CarDetailComponent implements OnInit {
 
       let carToBeRented: Rental = {
         carId: this.carId,
-        customerId: parseInt(this.customerId.toString()),
+        userId:this.authService.userId,
         rentDate: this.rentDate,
         returnDate: this.returnDate,
       };
@@ -142,7 +123,7 @@ export class CarDetailComponent implements OnInit {
           if (this.amountPaye <= 0) {
             this.router.navigate(['/cardetails/' + this.carId]);
             this.toastrService.error('Araç listesine yönlendiriliyorsunuz','Hatalı işlem');
-          } 
+          }
           else {
             this.paymentService.setRental(carToBeRented, this.amountPaye);
 

@@ -5,6 +5,7 @@ import { Car } from 'src/app/models/car';
 import { CarDto } from 'src/app/models/carDto';
 import { Payment } from 'src/app/models/payment';
 import { Rental } from 'src/app/models/rental';
+import { AuthService } from 'src/app/serviices/auth.service';
 import { CarRentalService } from 'src/app/serviices/car-rental.service';
 import { CarService } from 'src/app/serviices/car.service';
 import { PaymentService } from 'src/app/serviices/payment.service';
@@ -20,8 +21,8 @@ export class PaymentComponent implements OnInit {
   carDetail: Car[]=[];
   carToBeRented:Rental;
   payment:Payment;
-  
-  //Payment 
+
+  //Payment
   cardName!:string;
   cardNumber!:number;
   cardDateMonth!:number;
@@ -34,12 +35,13 @@ export class PaymentComponent implements OnInit {
   constructor(
     private paymentService:PaymentService,
     private toastrService:ToastrService,
+    public authService:AuthService,
     private router:Router) { }
 
-  
+
   ngOnInit(): void {
     this.carToBeRented = this.paymentService.getRental();
-    this.amountPaye = this.paymentService.getRentalAmountPaye();   
+    this.amountPaye = this.paymentService.getRentalAmountPaye();
     if ( (this.carToBeRented === undefined) || (this.amountPaye <= 0) ){
       this.router.navigate(['']);
       this.toastrService.error("Araç listesine yönlendiriliyorsunuz", "Hatalı işlem");
@@ -58,6 +60,6 @@ export class PaymentComponent implements OnInit {
         this.router.navigate(['']);
         this.toastrService.success("Ana Sayfaya Yönlendiriliyorsunuz", "Araç Kiralandı");
       })
-     
+
   }
 }

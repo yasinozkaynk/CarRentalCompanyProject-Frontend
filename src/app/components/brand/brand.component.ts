@@ -25,25 +25,6 @@ export class BrandComponent implements OnInit {
       this.brands=response.data
     })
   }
-  setCurrentBrandCategory(brand:Brand){
-    this.currentBrand = brand;
-  }
 
-  getCurrentBrandCategoryClass(brand:Brand){
-    if(brand ==this.currentBrand){
-      return "list-group-item"
-    }else{
-      return ""
-    }
-  }
-
-  getAllBrandCategoryClass(){
-       if(!this.currentBrand){
-        return "list-group-item active "
-       }
-       else{
-        return "list-group-item"
-       }
-  }
 
 }

@@ -1,16 +1,6 @@
-<ul class="list-group">
-    <li class="list-group-item " routerLink="/cars">
-        <h6> Tüm Markalar</h6>
-    </li>
-</ul>
-<th></th>
-<div class="mb-3">
-    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Marka ara..">
+<nav role="navigation" class="primary-navigation">
+  <ul >
+    <li  *ngFor="let brand of brands"><a  routerLink="cars/brand/{{brand.brandId}}"  href="#">{{brand.brandName}}</a></li>
+  </ul>
+</nav>
 
-    <select class="form-select" size="5" aria-label="size 3 select example">
-        <option style="background-color:  rgb(252, 251, 245);" (click)="setCurrentBrandCategory(brand)"
-            routerLink="cars/brand/{{brand.brandId}}" [class]="getCurrentBrandCategoryClass(brand)"
-            *ngFor="let brand of brands | brandFilter:filterText" value="1">{{brand.brandName}}</option>
-
-    </select>
-</div>

@@ -9,4 +9,9 @@ export interface Car{
     brandId:number;
     colorId:number
     minFindexScore:number
+    carModel:string;
+    capacity:number;
+    gear:number;
+    luggageCapacity:number;
+    fuel:string
 }

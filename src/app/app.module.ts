@@ -63,14 +63,14 @@ export function tokenGetter() {
     UserRentalComponent,
     HomeComponent,
     FindexComponent,
-   
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgbModule, 
+    NgbModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot({
@@ -81,7 +81,7 @@ export function tokenGetter() {
         tokenGetter: tokenGetter,
       }
     }),
-    
+
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}

@@ -23,7 +23,7 @@
               <input type="number" id="cardNumber" name="cardNumber" [(ngModel)]="cardNumber" placeholder="0000 0000 0000 0000" pattern="(?=.*[0-9]).{8,}"  />
               <div class="row">
                 <div class="col-4">
-                  <span>Son Kullanma Tarihi:</span> 
+                  <span>Son Kullanma Tarihi:</span>
                   <input type="number" id="cardDateMonth" name="cardDateMonth" [(ngModel)]="cardDateMonth" placeholder="Ay" required/>
                 </div>
                 <div class="col-4">
@@ -31,7 +31,7 @@
                   <input type="number" id="cardDateYear" name="cardDateYear" [(ngModel)]="cardDateYear" placeholder="Yıl" required/>
                 </div>
                 <div class="col-4">
-                    <span>CVV:</span> 
+                    <span>CVV:</span>
                     <input type="number" id="cardCvv" name="cardCvv" [(ngModel)]="cardCvv" placeholder="CVV" required/>
                 </div>
               </div>
@@ -41,21 +41,25 @@
         <div class="col-md-5">
           <div class="right border">
             <div class="header">Kiralama Detayı</div>
+            <div class="row lower">
+              <div class="col text-left">Adı Soyadı</div>
+              <div class="col text-right">{{ authService.name}} {{ authService.surname}}</div>
+            </div>
             <hr />
             <div class="row lower">
               <div class="col text-left">Kiralama Tarihi:</div>
-              <div class="col text-right">{{ carToBeRented.rentDate | date: 'dd/MM/yyyy HH:mm' }}</div>
+              <div class="col text-right">{{ carToBeRented.rentDate | date: 'dd/MM/yyyy' }}</div>
             </div>
             <div class="row lower">
               <div class="col text-left">Teslim Tarihi:</div>
-              <div class="col text-right">{{ carToBeRented.returnDate | date: 'dd/MM/yyyy HH:mm' }}</div>
+              <div class="col text-right">{{ carToBeRented.returnDate | date: 'dd/MM/yyyy' }}</div>
             </div>
             <div class="row lower">
               <div class="col text-left"><b>Ödenecek Tutar:</b></div>
               <div class="col text-right"><b>{{ amountPaye | currency:"₺" }}</b></div>
             </div>
             <div class="row lower"></div>
-            <button (click)="createPayment()" class="btn">Ödeme Yap</button>  
+            <button (click)="createPayment()" class="btn">Ödeme Yap</button>
           </div>
         </div>
       </div>

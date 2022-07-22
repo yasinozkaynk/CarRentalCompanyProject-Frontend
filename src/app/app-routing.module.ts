@@ -15,7 +15,7 @@ import { LoginGuard } from './guards/login.guard';
 
 
 const routes: Routes = [
-  {path:"",pathMatch:"full", component:CarComponent},
+  {path:"home",pathMatch:"full", component:CarComponent},
   {path:"cars",  component:CarComponent},
   {path:"payments",component:PaymentComponent , canActivate:[LoginGuard]},
   {path:"cars/color/:colorId",component:CarComponent},
@@ -28,7 +28,8 @@ const routes: Routes = [
   {path:"coloradd",component:ColorAddComponent,canActivate:[AdminGuard]},
   {path:"user",component:UserComponent},
   {path:"userrental",component:UserRentalComponent},
-  
+  {path:"cars/brand/:brandId/cars/cardetail/:carId",component:CarDetailComponent},
+
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
