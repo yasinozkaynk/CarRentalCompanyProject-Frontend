@@ -8,10 +8,13 @@ body {
 }
 
 .card {
-    max-width: 1000px;
-    margin: 0 auto;
-    float: none;
-    margin-bottom: 10px;
+  position: relative;
+  top: 120px;;
+  max-width: 1000px;
+ margin: 0 auto;
+ float: none;
+ padding: 10px;
+
 }
 
 .card-top {

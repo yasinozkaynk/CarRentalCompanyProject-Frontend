@@ -10,6 +10,8 @@ import { ResponseModel } from '../models/responseModel';
 })
 export class CarDetailService {
   apiUrl="https://localhost:44392/api/"
+  carId:number;
+
   constructor(private httpClient:HttpClient) { }
 
   carDetail(carId:number):Observable<ListResponseModel<Car>>{

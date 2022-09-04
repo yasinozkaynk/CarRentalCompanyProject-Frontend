@@ -1,6 +1,19 @@
-<nav role="navigation" class="primary-navigation">
+<!--
+<nav role="navigation" class="primary-navigation" >
   <ul >
     <li  *ngFor="let brand of brands"><a  routerLink="cars/brand/{{brand.brandId}}"  href="#">{{brand.brandName}}</a></li>
   </ul>
-</nav>
+</nav> -->
+  <nav role="navigation" class="primary-navigation">
+    <br>
+    <h3>KİRALIK ARAÇ FİLOSU</h3>
+    <p>Nereye giderseniz gidin, SUV, elektirikli, sedan veya ticari, istediğiniz her araca sahipsiniz.</p><br>
+    <hr>
+    <br>
+    <div class="tab"  role="tabpanel">
+       <ul class="nav nav-tabs" >
+         <li *ngFor="let brand of brands" role="presentation" class="active"><a routerLink="cars/brand/{{brand.brandId}}" aria-controls="home" role="tab" data-toggle="tab">{{brand.brandName}}</a></li>
+      </ul>
+    </div>
+  </nav>
 

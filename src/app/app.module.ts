@@ -33,6 +33,7 @@ import { UserComponent } from './components/user/user.component';
 import { UserRentalComponent } from './components/user-rental/user-rental.component';
 import { HomeComponent } from './components/home/home.component';
 import { FindexComponent } from './components/findex/findex.component';
+import { OfferComponent } from './components/offer/offer.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -63,6 +64,7 @@ export function tokenGetter() {
     UserRentalComponent,
     HomeComponent,
     FindexComponent,
+    OfferComponent,
 
   ],
   imports: [

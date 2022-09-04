@@ -34,13 +34,13 @@ export class RegisterComponent implements OnInit {
       let moodal=Object.assign({},this.registerForm.value);
       this.authService.register(moodal).subscribe(response=>{
         this.toastrService.info("Kayıt Başarılı")
-        this.router.navigate(['login']);
+        this.router.navigate(['']);
       },responseError => {
         if(responseError.error.Errors.length>0){
          for (let i = 0; i < responseError.error.Errors.length; i++) {
-          this.toastrService.error(responseError.error.Errors[i].ErrorMessage, "Validation Error");          
+          this.toastrService.error(responseError.error.Errors[i].ErrorMessage, "Validation Error");
            }}
-      })   
+      })
     }
   }
 

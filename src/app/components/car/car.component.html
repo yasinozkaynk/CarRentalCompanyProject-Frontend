@@ -1,9 +1,10 @@
   <!-- <div class="mb-3">
     <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Araç ara..." >
   </div> -->
+  <br><br><br><br>
 <app-brand></app-brand>
 <div class="d-flex flex-wrap justify-content-center justify-content-xl-start"  >
-  <div class="d-flex" *ngFor="let car of cars | filterPipe:filterText"  style="width: 23rem;">
+  <div class="d-flex " *ngFor="let car of cars | filterPipe:filterText"  style="width: 22rem;">
     <div class="product">
       <div>
           <!-- <span class="product__price">{{car.dailyPrice | currency: "TRY":"symbol-narrow":"1.2-2"}}/gün</span> -->
@@ -12,37 +13,37 @@
           </span>
           <h4>{{car.carModel}}</h4>
           <div class="row" id="properties">
-            <div class="col-md-6">
+            <div class="col-md-6" style="position:relative; top:-35px;">
               <a>
-                <svg xmlns="http://www.w3.org/2000/svg" style="color:#cf092c; position:relative; left:-8px;" width="22" height="22" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                <svg xmlns="http://www.w3.org/2000/svg" style="color:#1d1a1a; position:relative; left:-8px;" width="22" height="22" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
                 <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                 <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
                 <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
               </svg>{{car.capacity}} Kişi
              </a><br>
               <a>
-                 <svg xmlns="http://www.w3.org/2000/svg"   style="color:#cf092c; position:relative; left:-8px;"width="22" height="22" fill="currentColor" class="bi bi-diagram-2-fill" viewBox="0 0 16 16">
+                 <svg xmlns="http://www.w3.org/2000/svg"   style="color:#1d1a1a; position:relative; left:-8px;"width="22" height="22" fill="currentColor" class="bi bi-diagram-2-fill" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H11a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 5 7h2.5V6A1.5 1.5 0 0 1 6 4.5v-1zm-3 8A1.5 1.5 0 0 1 4.5 10h1A1.5 1.5 0 0 1 7 11.5v1A1.5 1.5 0 0 1 5.5 14h-1A1.5 1.5 0 0 1 3 12.5v-1zm6 0a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1A1.5 1.5 0 0 1 9 12.5v-1z"/>
               </svg>{{car.gear}}
              </a><br>
               <a>
-                <svg xmlns="http://www.w3.org/2000/svg"  style="color:#cf092c; position:relative; left:-8px;" width="22" height="22" fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
+                <svg xmlns="http://www.w3.org/2000/svg"  style="color:#1d1a1a; position:relative; left:-8px;" width="22" height="22" fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
                 <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z"/>
               </svg>{{car.luggageCapacity}} Çanta </a><br>
               <a>
-                <svg xmlns="http://www.w3.org/2000/svg"  style="color:#cf092c; position:relative; left:-8px;"width="22" height="22" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                <svg xmlns="http://www.w3.org/2000/svg"  style="color:#1d1a1a; position:relative; left:-8px;"width="22" height="22" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
                 <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
               </svg>{{car.fuel}}
             </a><br><br>
 
             </div>
-            <div class="col-md-6">
-              <a><svg xmlns="http://www.w3.org/2000/svg"  style="color:#cf092c; position:relative; left:-8px;" width="22" height="22" fill="currentColor" class="bi bi-calendar-date" viewBox="0 0 16 16">
+            <div class="col-md-6" style="position:relative; top:-35px;">
+              <a><svg xmlns="http://www.w3.org/2000/svg"  style="color:#1d1a1a; position:relative; left:-8px;" width="22" height="22" fill="currentColor" class="bi bi-calendar-date" viewBox="0 0 16 16">
                 <path d="M6.445 11.688V6.354h-.633A12.6 12.6 0 0 0 4.5 7.16v.695c.375-.257.969-.62 1.258-.777h.012v4.61h.675zm1.188-1.305c.047.64.594 1.406 1.703 1.406 1.258 0 2-1.066 2-2.871 0-1.934-.781-2.668-1.953-2.668-.926 0-1.797.672-1.797 1.809 0 1.16.824 1.77 1.676 1.77.746 0 1.23-.376 1.383-.79h.027c-.004 1.316-.461 2.164-1.305 2.164-.664 0-1.008-.45-1.05-.82h-.684zm2.953-2.317c0 .696-.559 1.18-1.184 1.18-.601 0-1.144-.383-1.144-1.2 0-.823.582-1.21 1.168-1.21.633 0 1.16.398 1.16 1.23z"/>
                 <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
               </svg>21 Yaş ve Üstü </a>
               <br>
-               <span><svg xmlns="http://www.w3.org/2000/svg"  style="color:#cf092c; position:relative; left:-8px;" width="22" height="22" fill="currentColor" class="bi bi-credit-card" viewBox="0 0 16 16">
+               <span><svg xmlns="http://www.w3.org/2000/svg"  style="color:#1d1a1a; position:relative; left:-8px;" width="22" height="22" fill="currentColor" class="bi bi-credit-card" viewBox="0 0 16 16">
                 <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z"/>
                 <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z"/>
               </svg></span>1 Kredi Kartı

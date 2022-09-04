@@ -42,10 +42,10 @@ export class PaymentComponent implements OnInit {
   ngOnInit(): void {
     this.carToBeRented = this.paymentService.getRental();
     this.amountPaye = this.paymentService.getRentalAmountPaye();
-    if ( (this.carToBeRented === undefined) || (this.amountPaye <= 0) ){
-      this.router.navigate(['']);
-      this.toastrService.error("Araç listesine yönlendiriliyorsunuz", "Hatalı işlem");
-    }
+    // if ( (this.carToBeRented === undefined) || (this.amountPaye <= 0) ){
+    //   this.router.navigate(['']);
+    //   this.toastrService.error("Araç listesine yönlendiriliyorsunuz", "Hatalı işlem");
+    // }
   }
   createPayment(){
       this.payment = {
